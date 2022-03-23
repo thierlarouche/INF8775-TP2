@@ -26,6 +26,7 @@ then
 
     else
         python3 src/glouton.py $path false false
+
     fi
 
 #ALGO PROG DYNAMIQUE
