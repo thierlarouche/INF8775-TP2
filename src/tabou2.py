@@ -77,7 +77,6 @@ if __name__ == '__main__':
             currentProfondeur = bloc._profondeur
             blocSolutions.append(bloc)
             hauteurPile += bloc._hauteur
-
     #debut tabou
     index =0
 
@@ -114,9 +113,13 @@ if __name__ == '__main__':
  ######################################################
 # build tabou
  ################################################
-    random = random.randrange(7,10)
-    blocTabou(random, blocRebuild[0])
-    print(blocTabou._bloc._longeur)
+    for bloc in blocRebuild :
+        rand = random.randrange(7,11)
+        blocT = blocTabou(rand, bloc)
+        listTabou.append(blocT)
+
+    for bloc in listTabou:
+        print("tabou:", bloc._random," ", bloc._bloc._longeur, " ", bloc._bloc._profondeur, " ", bloc._bloc._hauteur )
     #arret du compteur
     stop = time.perf_counter()
 
