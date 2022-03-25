@@ -53,7 +53,7 @@ if __name__ == '__main__':
     Hmax = 0
     indexMax = 0
 
-    with open("../b50000_10.txt", "r") as file:
+    with open("../b100000_10.txt", "r") as file:
         for line in file:
             currentLine = line.split()
 
