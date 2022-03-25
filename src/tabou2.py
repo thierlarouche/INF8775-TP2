@@ -44,6 +44,8 @@ if __name__ == '__main__':
     blocs = []
     blocsTries = []
     blocSolutions = []
+    blocSolReserve = []
+    blocSolGlouton = []
     listTabou = []
     blocsLeftOut = []
     blocRebuild = []
@@ -77,6 +79,10 @@ if __name__ == '__main__':
             currentProfondeur = bloc._profondeur
             blocSolutions.append(bloc)
             hauteurPile += bloc._hauteur
+
+    blocSolReserve = blocSolutions
+    blocSolGlouton = blocSolutions
+
     #debut tabou
     index =0
 
@@ -110,13 +116,27 @@ if __name__ == '__main__':
     for bloc in blocRebuild:
         if((blocToInsert._longeur > bloc._longeur ) and (blocToInsert._profondeur > bloc._profondeur)):
             blocSolutions.append(bloc)
- ######################################################
-# build tabou
- ################################################
+
+# remplir tabou
     for bloc in blocRebuild :
         rand = random.randrange(7,11)
         blocT = blocTabou(rand, bloc)
         listTabou.append(blocT)
+
+    
+#############################################
+###########################################
+#Hauteur Solution
+    hauteurSol
+    for bloc in blocSolutions :
+        
+
+#Garder en banque la solution obtenu
+#Refaire cela recursivement
+
+
+
+
 
     for bloc in listTabou:
         print("tabou:", bloc._random," ", bloc._bloc._longeur, " ", bloc._bloc._profondeur, " ", bloc._bloc._hauteur )
