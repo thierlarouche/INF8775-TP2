@@ -4,20 +4,12 @@ import time
 from operator import attrgetter
 
 
-# path = sys.argv[1]
-# bloc = sys.argv[2]
-# timer = sys.argv[3]
-# start = 0
-# stop = 0
+path = sys.argv[1]
+blocAffiche = sys.argv[2]
+timer = sys.argv[3]
+start = 0
+stop = 0
 
-# if(timer == "true"):
-    
-start = time.perf_counter()
-################################################################################
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 class bloc:
     _longeur = 0
@@ -53,7 +45,7 @@ if __name__ == '__main__':
     Hmax = 0
     indexMax = 0
 
-    with open("../b100000_10.txt", "r") as file:
+    with open(path, "r") as file:
         for line in file:
             currentLine = line.split()
 
@@ -61,6 +53,10 @@ if __name__ == '__main__':
             currentBloc = bloc(int(currentLine[0]),int(currentLine[1]), int(currentLine[2]), int(currentLine[0]) * int(currentLine[1]), 0, 0, 0)
             blocs.append(currentBloc)
 
+
+    if(timer == "true"):
+        start = time.perf_counter()
+    ################################################################################
 
     # on trie les blocs selon l'aire
     blocsTriesAire = sorted(blocs, key=attrgetter('_aire'), reverse = True)
@@ -106,31 +102,18 @@ if __name__ == '__main__':
         if (currentIndex == blocsTriesAire[bloc]._index) and (blocsTriesAire[bloc]._index >= 0) :
             currentIndex = blocsTriesAire[bloc]._blocPrecedant
             blocSolutions.append(blocsTriesAire[bloc])
-
+            
+    ################################################################################
     #arret du compteur
     stop = time.perf_counter()
 
     #sortie de la solution
-    print("blocs solution : ")
     index=0
-    for bloc in blocSolutions:
-        index = index+1
-        print(index, " : " ,bloc._longeur, " ", bloc._profondeur, " ", bloc._hauteur)
-    print("Hauteur : ")
-    print(Hmax)
+    myRange = reversed(range(0, len(blocSolutions)))
+    if (blocAffiche == "true"):
+        for i in myRange:
+            index = index+1
+            print(blocSolutions[i]._hauteur, " ", blocSolutions[i]._longeur, " ", blocSolutions[i]._profondeur)
 
-################################################################################
-""" mastring = "sol_"
-string = mastring + path
-f = open(string, "a")
-for point in pointcritsolution:
-    string = " "
-    Sol = " "
-    f.write(str(point._x, " ", point._y))
-    f.write("_")
-f.close() """
-
-################################################################################
-# if(timer == "true"):
-
-print((stop - start)*1000)
+if(timer == "true"):
+    print((stop - start)*1000)
